@@ -6,6 +6,7 @@
 
     const Logout = () => {
         const user = userStore.active_user;
+        userStore.clearUser(user);
         Api.logOut(user);
     };
 </script>
