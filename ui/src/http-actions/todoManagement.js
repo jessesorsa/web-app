@@ -6,14 +6,12 @@ const addTodo = async (todo) => {
     const todoStore = userTodoStore();
 
     const email = userStore.active_user;
-    console.log("this is the email:")
-    console.log(email)
 
     const body = {
         email: email,
         todo: todo,
     };
-
+    console.log("this is the body in addTodo:")
     console.log(body);
 
     const res = await fetch("http://localhost:8000/todos", {
@@ -24,18 +22,7 @@ const addTodo = async (todo) => {
         body: JSON.stringify(body)
 
     });
-
-
     const data = await res.json();
-
-    console.log("this is the data");
-    console.log(data);
-
-    console.log("this is the message:")
-    console.log(data.message);
-
-    console.log("this is the todo:")
-    console.log(todo)
 
     if (data.message === "todo created") {
         todoStore.addTodo(todo);
@@ -48,14 +35,15 @@ const deleteTodo = async (todo) => {
     const todoStore = userTodoStore();
 
     const email = userStore.active_user;
-
+    console.log("this is the email in delete todos:")
+    console.log(email)
 
     const body = {
         email: email,
         todo: todo,
     };
 
-    console.log("boooody");
+    console.log("this is the body in deleteTodo:")
     console.log(body);
 
     const res = await fetch("http://localhost:8000/todos/delete", {
@@ -68,7 +56,7 @@ const deleteTodo = async (todo) => {
     });
     const data = await res.json();
     console.log(data.message);
-    if (data.message === "deleted") {
+    if (data.message === "todo deleted") {
         todoStore.deleteTodo(todo);
     };
     return data;

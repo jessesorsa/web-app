@@ -5,6 +5,7 @@
     import Card from "./Card.svelte";
     const todoStore = userTodoStore();
     const initialize = initTodos();
+
     //await initialize;
     /*
     const loadTodos = async () => {

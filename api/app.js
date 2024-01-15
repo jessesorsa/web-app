@@ -15,7 +15,7 @@ app.post("/auth/logout", authController.logoutUser);
 
 app.post("/todos/get", todoController.showTodos);
 app.post("/todos", todoController.createTodo);
-app.post("/todos/:id", todoController.updateTodo);
+//app.post("/todos/:id", todoController.updateTodo);
 app.post("/todos/delete", todoController.deleteTodo);
 
 export default app;

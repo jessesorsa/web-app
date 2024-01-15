@@ -6,35 +6,31 @@ const eta = new Eta({ views: `${Deno.cwd()}/templates/` });
 
 const createTodo = async (c) => {
     const body = await c.req.json();
+    console.log("body in createTodo");
+    console.log(body);
     const email = body.email;
-    console.log("This is the user email:")
-    console.log(body.email);
     const todo = body.todo;
     const user = await userService.findUserByEmail(email);
-
     await todoService.createTodo(user.id, todo);
     return c.json({ message: "todo created" });
 };
 
-const showTodos = async (c) => {
-    const body = await c.req.json();
-    console.log("body in showTodos");
-    console.log(body);
-    const email = body;
-    const user = await userService.findUserByEmail(email);
-
-    console.log(user);
-    const list = await todoService.listTodos(user.id);
-    return c.json({ body: list });
-};
-
 const deleteTodo = async (c) => {
     const body = await c.req.json();
-    const email = body;
+    console.log("body in deleteTodo");
+    const email = body.email;
     const todo = body.todo;
     const user = await userService.findUserByEmail(email);
     await todoService.deleteTodo(user.id, todo);
-    return c.json({ message: "deleted" });
+    return c.json({ message: "todo deleted" });
+};
+
+const showTodos = async (c) => {
+    const body = await c.req.json();
+    const email = body;
+    const user = await userService.findUserByEmail(email);
+    const list = await todoService.listTodos(user.id);
+    return c.json({ body: list });
 };
 
 export { createTodo, showTodos, deleteTodo };
