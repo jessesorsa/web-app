@@ -5,8 +5,11 @@ import * as sessionService from "./sessionService.js";
 
 const loginUser = async (c) => {
     const body = await c.req.json();
+    console.log("loginUser body");
+    console.log(body);
 
     const user = await userService.findUserByEmail(body.email);
+
     if (!user.email) {
         return c.json({ message: "No user with the email exists." });
     }
@@ -45,7 +48,8 @@ const registerUser = async (c) => {
         passwordHash: scrypt.hash(body.password),
     };
 
-    //await userService.createUser(user);
+    await userService.createUser(user);
+
     //console.log("added user")
 
     //await sessionService.createSession(c, user);
