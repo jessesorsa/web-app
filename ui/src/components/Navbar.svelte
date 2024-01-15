@@ -15,6 +15,7 @@
     <div class="flex-1 text-xl font-bold ml-6 mr-20">TWODO</div>
     <nav class="flex-none">
         <ul class="menu menu-horizontal px-1 items-center">
+            <li><a href="/todos">Todos</a></li>
             <li><a href="/">Sign up</a></li>
             <li><a href="/login">Login</a></li>
             <li>

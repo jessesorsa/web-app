@@ -21,6 +21,7 @@ const signUp = async (user) => {
 };
 
 const loginIn = async (user) => {
+    console.log(user);
     const res = await fetch("http://localhost:8000/auth/login", {
         method: "POST",
         headers: {

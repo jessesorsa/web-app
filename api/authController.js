@@ -5,12 +5,16 @@ import * as sessionService from "./sessionService.js";
 
 const loginUser = async (c) => {
     const body = await c.req.json();
+    console.log("loginUser");
     console.log(body);
 
     const user = await userService.findUserByEmail(body.email);
-    if (!user) {
+    if (!user.email) {
         return c.json({ message: "No user with the email exists." });
     }
+
+    console.log("found user");
+    console.log(user);
 
     const passwordsMatch = scrypt.verify(body.password, user.password_hash);
 
@@ -18,7 +22,11 @@ const loginUser = async (c) => {
         return c.json({ message: "Incorrect password." });
     }
 
+    console.log("passwords mathced")
+
     await sessionService.createSession(c, user);
+    console.log("getUserFromSession");
+    console.log(await sessionService.getUserFromSession(c));
 
     return c.json({ message: "login successful" });
 };
@@ -26,13 +34,13 @@ const loginUser = async (c) => {
 const registerUser = async (c) => {
 
     const body = await c.req.json();
+    console.log("register user body");
     console.log(body);
     if (body.password !== body.verification) {
         return c.json({ message: "The provided passwords did not match." });
     }
 
     const existingUser = await userService.findUserByEmail(body.email);
-    console.log();
     if (existingUser.email === body.email) {
         return c.json({ message: "A user with the email already exists." });
     }
@@ -43,7 +51,11 @@ const registerUser = async (c) => {
     };
 
     await userService.createUser(user);
+    console.log("added user")
 
+    await sessionService.createSession(c, user);
+    const a = sessionService.getUserFromSession(c);
+    console.log(a);
     return c.json({ message: "user signed up" });
 };
 

@@ -6,7 +6,8 @@ const addTodo = async (todo) => {
     const todoStore = userTodoStore();
 
     const email = userStore.active_user;
-
+    console.log("this is the email:")
+    console.log(email)
 
     const body = {
         email: email,
