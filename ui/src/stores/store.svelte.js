@@ -3,11 +3,13 @@ let active_user = $state("");
 let todos = $state([]);
 
 const initTodos = async () => {
-  todos = await fetchTodos();
-  console.log("initialiseze");
+  console.log("initial todos");
+  //if (todos.length > 0) return;
+  const todo_list = await fetchTodos();
+  todos = todo_list;
+  console.log("iniatilise");
   console.log(todos);
 };
-
 
 const userTodoStore = () => {
   return {
@@ -15,7 +17,10 @@ const userTodoStore = () => {
       return todos;
     },
     addTodo: (todo) => {
+      console.log("in the addTodo");
+      console.log("this the todo to be added:");
       console.log(todo);
+      console.log("this the original todo list:");
       console.log(todos.body);
       todos = [...todos.body, todo];
     },

@@ -1,5 +1,5 @@
 <script>
-    import * as Api from "../http-actions/userManagement";
+    //import * as Api from "../http-actions/userManagement";
     import { userAccessStore } from "../stores/store.svelte";
 
     const userStore = userAccessStore();
@@ -7,7 +7,6 @@
     const Logout = () => {
         const user = userStore.active_user;
         userStore.clearUser(user);
-        Api.logOut(user);
     };
 </script>
 

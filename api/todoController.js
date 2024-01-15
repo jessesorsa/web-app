@@ -10,7 +10,7 @@ const createTodo = async (c) => {
     console.log("This is the user email:")
     console.log(body.email);
     const todo = body.todo;
-    const user = await userService.findUserByEmail(email);;
+    const user = await userService.findUserByEmail(email);
 
     await todoService.createTodo(user.id, todo);
     return c.json({ message: "todo created" });
@@ -18,11 +18,14 @@ const createTodo = async (c) => {
 
 const showTodos = async (c) => {
     const body = await c.req.json();
+    console.log("body in showTodos");
+    console.log(body);
     const email = body;
     const user = await userService.findUserByEmail(email);
+
+    console.log(user);
     const list = await todoService.listTodos(user.id);
     return c.json({ body: list });
-
 };
 
 const deleteTodo = async (c) => {

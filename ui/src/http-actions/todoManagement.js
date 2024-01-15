@@ -24,8 +24,19 @@ const addTodo = async (todo) => {
         body: JSON.stringify(body)
 
     });
+
+
     const data = await res.json();
+
+    console.log("this is the data");
+    console.log(data);
+
+    console.log("this is the message:")
     console.log(data.message);
+
+    console.log("this is the todo:")
+    console.log(todo)
+
     if (data.message === "todo created") {
         todoStore.addTodo(todo);
     };
@@ -66,7 +77,8 @@ const deleteTodo = async (todo) => {
 const fetchTodos = async () => {
     const userStore = userAccessStore();
     const email = userStore.active_user;
-
+    console.log("fetching email:");
+    console.log(email);
     const res = await fetch("http://localhost:8000/todos/get", {
         method: "POST",
         headers: {
@@ -76,6 +88,7 @@ const fetchTodos = async () => {
 
     });
     const data = await res.json();
+    console.log("recieved todos");
     console.log(data);
     return data;
 }
