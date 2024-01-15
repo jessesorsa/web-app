@@ -33,12 +33,10 @@ const loginIn = async (user) => {
 
     const data = await res.json();
     console.log(data);
-    if (data.message === "login successful") {
-        userStore.addUser(user);
-    };
     return data;
 };
 
+/*
 const logOut = async (user) => {
     const res = await fetch("http://localhost:8000/auth/logout", {
         method: "POST",
@@ -57,5 +55,6 @@ const logOut = async (user) => {
     };
     return data;
 }
+*/
 
-export { signUp, loginIn, logOut };
+export { signUp, loginIn };

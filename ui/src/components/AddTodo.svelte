@@ -1,8 +1,15 @@
 <script>
     let todo = $state("");
     import * as Api from "../http-actions/todoManagement";
+    import { userTodoStore } from "../stores/store.svelte.js";
+    const todoStore = userTodoStore();
+
     const addTodo = () => {
         Api.addTodo(todo);
+        let addTodoObject = {
+            todo: todo,
+        };
+        todoStore.addTodo(addTodoObject);
         todo = "";
     };
 </script>

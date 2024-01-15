@@ -27,8 +27,8 @@
     };
 </script>
 
-<div class="hero mb-40 mt-40">
-    <div class="hero-content text-center">
+<div class="card w-70 bg-base-100 w-300 mb-20 mt-20 shadow-xl rounded-3xl">
+    <div class="hero-content text-center mt-10 mb-10">
         <div class="max-w-md">
             <h1 class="text-5xl font-bold">Sign up!</h1>
             <div class="flex items-center mt-5">

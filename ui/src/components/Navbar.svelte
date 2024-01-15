@@ -18,8 +18,10 @@
             <li><a href="/">Sign up</a></li>
             <li><a href="/login">Login</a></li>
             <li>
-                <div class="items-center">
-                    <a href="/" class="btn" on:click={Logout}>Logout</a>
+                <div class="items-center px-1">
+                    <a href="/" class="btn btn-outline" on:click={Logout}
+                        >Logout</a
+                    >
                 </div>
             </li>
         </ul>

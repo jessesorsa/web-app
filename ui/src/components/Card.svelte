@@ -1,9 +1,12 @@
 <script>
     import * as Api from "../http-actions/todoManagement";
+    import { userTodoStore } from "../stores/store.svelte";
+    const todoStore = userTodoStore();
     let { todo } = $props();
 
     const Delete = () => {
         Api.deleteTodo(todo.todo);
+        todoStore.deleteTodo(todo);
     };
 </script>
 

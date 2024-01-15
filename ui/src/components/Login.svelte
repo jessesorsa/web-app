@@ -1,5 +1,9 @@
 <script>
     import * as Api from "../http-actions/userManagement";
+    import { userAccessStore } from "../stores/store.svelte.js";
+    import { initTodos } from "../stores/store.svelte.js";
+
+    const userStore = userAccessStore();
 
     let user = $state({
         email: "",
@@ -15,6 +19,8 @@
         } else if (res.message === "Incorrect password.") {
             log = "Incorrect password.";
         } else if (res.message === "login successful") {
+            userStore.addUser(user);
+            await initTodos();
             log = "Login successful";
         }
 
@@ -23,8 +29,8 @@
     };
 </script>
 
-<div class="hero mb-40 mt-40">
-    <div class="hero-content text-center">
+<div class="card w-70 bg-base-100 w-300 mb-20 mt-20 shadow-xl rounded-3xl">
+    <div class="hero-content text-center mt-10 mb-10">
         <div class="max-w-md">
             <h1 class="text-5xl font-bold">Login.</h1>
             {#if log !== "Login successful"}

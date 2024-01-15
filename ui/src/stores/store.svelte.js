@@ -4,7 +4,6 @@ let todos = $state([]);
 
 const initTodos = async () => {
   console.log("initial todos");
-  //if (todos.length > 0) return;
   const todo_list = await fetchTodos();
   todos = todo_list;
   console.log("iniatilise");
@@ -14,19 +13,25 @@ const initTodos = async () => {
 const userTodoStore = () => {
   return {
     get list() {
+      console.log("this is the todos");
+      console.log(todos);
       return todos;
     },
     addTodo: (todo) => {
-      console.log("in the addTodo");
-      console.log("this the todo to be added:");
+      console.log("currently adding the todo;");
       console.log(todo);
-      console.log("this the original todo list:");
-      console.log(todos.body);
-      todos = [...todos.body, todo];
+      console.log("to list todos.todo;");
+      console.log(todos.todo);
+      todos = [...todos, todo];
     },
     deleteTodo: (todo) => {
+      console.log("todo in deletee todo");
+      console.log(todo);
+      console.log("todos list in delete");
+      console.log(todos);
+
       todos.forEach((item, index) => {
-        if (item.id === todo.id) {
+        if (item.todo === todo.todo) {
           todos.splice(index, 1);
         }
       });
