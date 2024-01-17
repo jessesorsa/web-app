@@ -1,11 +1,14 @@
 <script>
     import { userAccessStore } from "../stores/store.svelte";
+    import { userTodoStore } from "../stores/store.svelte";
 
     const userStore = userAccessStore();
+    const todoStore = userTodoStore();
 
     const Logout = () => {
         const user = userStore.active_user;
         userStore.clearUser(user);
+        todoStore.clearTodos();
     };
 </script>
 

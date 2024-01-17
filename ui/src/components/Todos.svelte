@@ -3,6 +3,8 @@
     import Card from "./Card.svelte";
 
     const todoStore = userTodoStore();
+
+    $: todoStore.list;
 </script>
 
 <div

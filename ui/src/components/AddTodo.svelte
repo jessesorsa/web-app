@@ -17,7 +17,7 @@
 <div class="hero mt-10 mb-5">
     <div class="hero-content text-center">
         <div class="max-w-md">
-            <h1 class="text-5xl font-bold">Add todos.</h1>
+            <h1 class="text-3xl font-bold">Add todos.</h1>
             <div class="flex items-center mt-5">
                 <label for="text" class="mr-2">Description:</label>
                 <input

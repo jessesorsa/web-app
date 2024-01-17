@@ -2,6 +2,7 @@
     import * as Api from "../http-actions/userManagement";
     import { userAccessStore } from "../stores/store.svelte.js";
     import { initTodos } from "../stores/store.svelte.js";
+    import { goto } from "$app/navigation";
 
     const userStore = userAccessStore();
 
@@ -23,6 +24,7 @@
             console.log(user);
             userStore.addUser(user);
             await initTodos();
+            goto("/todos");
             log = "Login successful";
         }
 
