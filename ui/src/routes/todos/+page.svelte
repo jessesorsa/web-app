@@ -1,19 +1,14 @@
 <script>
     import Todos from "../../components/Todos.svelte";
+    import AddTodo from "../../components/AddTodo.svelte";
     import DefaultPage from "../../components/DefaultPage.svelte";
     import { userAccessStore } from "../../stores/store.svelte.js";
-    import { onMount } from "svelte";
     const userStore = userAccessStore();
-    let authenticated = $state();
-
-    onMount(() => {
-        if (userStore.active_user !== "") {
-            authenticated = true;
-        }
-    });
+    let user = userStore.active_user;
 </script>
 
-{#if authenticated === true}
+{#if user !== ""}
+    <AddTodo />
     <Todos />
 {:else}
     <DefaultPage />

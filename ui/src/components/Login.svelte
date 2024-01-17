@@ -19,6 +19,8 @@
         } else if (res.message === "Incorrect password.") {
             log = "Incorrect password.";
         } else if (res.message === "login successful") {
+            console.log("adding user in login, user:");
+            console.log(user);
             userStore.addUser(user);
             await initTodos();
             log = "Login successful";

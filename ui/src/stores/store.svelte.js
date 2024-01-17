@@ -1,42 +1,50 @@
+let initial_user = "";
+if (
+  typeof window !== "undefined" &&
+  localStorage.hasOwnProperty("user")
+) {
+  initial_user = parseInt(localStorage.getItem("user"));
+}
+
+let initial_todos = [];
+if (
+  typeof window !== "undefined" &&
+  localStorage.hasOwnProperty("todos")
+) {
+  initial_todos = parseInt(localStorage.getItem("todos"));
+}
+
 import { fetchTodos } from "../http-actions/todoManagement";
-let active_user = $state("");
-let todos = $state([]);
+let active_user = $state(initial_user);
+let todos = $state(initial_todos);
 
 const initTodos = async () => {
-  console.log("initial todos");
   const todo_list = await fetchTodos();
   todos = todo_list;
-  console.log("iniatilise");
-  console.log(todos);
+  localStorage.setItem("todos", todos);
 };
 
 const userTodoStore = () => {
   return {
     get list() {
-      console.log("this is the todos");
-      console.log(todos);
       return todos;
     },
     addTodo: (todo) => {
-      console.log("currently adding the todo;");
-      console.log(todo);
-      console.log("to list todos.todo;");
-      console.log(todos.todo);
       todos = [...todos, todo];
+      localStorage.setItem("todos", todos);
     },
     deleteTodo: (todo) => {
-      console.log("todo in deletee todo");
-      console.log(todo);
-      console.log("todos list in delete");
-      console.log(todos);
-
       todos.forEach((item, index) => {
         if (item.todo === todo.todo) {
           todos.splice(index, 1);
         }
       });
-
+      localStorage.setItem("todos", todos);
     },
+    clearTodos: () => {
+      todos = [];
+      localStorage.setItem("todos", todos);
+    }
   };
 };
 
@@ -47,9 +55,12 @@ const userAccessStore = () => {
     },
     clearUser: () => {
       active_user = "";
+      localStorage.setItem("user", active_user);
     },
     addUser: (user) => {
+      console.log(user);
       active_user = user.email;
+      localStorage.setItem("user", active_user);
     },
   };
 };
