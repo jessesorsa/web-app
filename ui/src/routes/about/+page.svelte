@@ -1,5 +1,5 @@
 <script>
-    import ServiceText from "../../components/Service-text.svelte";
+    import About from "../../components/About.svelte";
 </script>
 
-<ServiceText />
+<About />

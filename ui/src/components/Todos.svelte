@@ -1,17 +1,9 @@
 <script>
-    import { initTodos } from "../stores/store.svelte.js";
     import { userTodoStore } from "../stores/store.svelte.js";
     import AddTodo from "./AddTodo.svelte";
     import Card from "./Card.svelte";
 
     const todoStore = userTodoStore();
-    //await initialize;
-    /*
-    const loadTodos = async () => {
-        console.log("loading initial todos");
-        await initialize;
-    };
-*/
 </script>
 
 <AddTodo />

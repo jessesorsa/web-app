@@ -1,5 +1,5 @@
 <script>
-    import ServiceText from "../../components/Service-text.svelte";
+    import Contact from "../../components/Contact.svelte";
 </script>
 
-<ServiceText />
+<Contact />

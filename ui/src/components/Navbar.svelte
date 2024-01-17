@@ -1,5 +1,4 @@
 <script>
-    //import * as Api from "../http-actions/userManagement";
     import { userAccessStore } from "../stores/store.svelte";
 
     const userStore = userAccessStore();

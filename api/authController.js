@@ -1,7 +1,5 @@
 import * as scrypt from "https://deno.land/x/scrypt@v4.2.1/mod.ts";
 import * as userService from "./userService.js";
-import * as sessionService from "./sessionService.js";
-
 
 const loginUser = async (c) => {
     const body = await c.req.json();
@@ -20,11 +18,7 @@ const loginUser = async (c) => {
         return c.json({ message: "Incorrect password." });
     }
 
-    console.log("passwords mathced")
-
-    //await sessionService.createSession(c, user);
-    //console.log("getUserFromSession");
-    //console.log(await sessionService.getUserFromSession(c));
+    console.log("passwords matched")
 
     return c.json({ message: "login successful" });
 };
@@ -50,17 +44,7 @@ const registerUser = async (c) => {
 
     await userService.createUser(user);
 
-    //console.log("added user")
-
-    //await sessionService.createSession(c, user);
-    //const a = sessionService.getUserFromSession(c);
-    //console.log(a);
     return c.json({ message: "user signed up" });
 };
 
-const logoutUser = async (c) => {
-    //await sessionService.deleteSession(c);
-    return c.json({ message: "user signed out" });
-};
-
-export { registerUser, loginUser, logoutUser };
+export { registerUser, loginUser };
